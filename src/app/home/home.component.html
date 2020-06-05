@@ -1,0 +1,18 @@
+<h2 class="text-info text-center my-5">Įvęskite veiksmų seką kurią skaičiuosite</h2>
+<div class="input-group my-2">
+  <input class = "form-control"type="text" [(ngModel)]="inputValue" 
+  (keyup.enter)="onSubmit()"
+  (keydown)="onKey($event)">
+  <div class="input-group-append">
+    <button class="btn btn-outline-secondary font-weight-bold text-warning" type="submit" (click)="onSubmit()">Skaičiuoti</button>
+  </div>
+</div>
+<H2 class="text-info text-center mb-2" *ngIf = "gauta">{{rezultatas}}</H2>
+<div class="row">
+  <app-digits class="col-lg-3 mb-3"*ngFor="let dig of digits" [digit]="dig"></app-digits>
+</div>
+<div *ngIf = "gauta" >
+<app-resultset *ngFor="let rez of prevInputs.slice().reverse(); let i = index" [oneR]="rez" 
+[countn]="counter(i)" ></app-resultset>
+</div>
+  
